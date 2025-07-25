@@ -1,0 +1,531 @@
+/* Reset y variables */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Reutilizando las variables globales del proyecto */
+:root {
+  --primary-color: #990000; /* Rojo de Uleam */
+  --secondary-color: #d4a76a; /* Beige/Marrón claro de la barra de navegación */
+  --accent-color: #0066cc;
+  --text-color: #333333;
+  --light-text: #666666;
+  --background-color: #ffffff;
+  --light-background: #f8f9fa;
+  --border-color: #e0e0e0;
+  --shadow-color: rgba(0, 0, 0, 0.1);
+  --success-color: #28a745;
+  --warning-color: #ffc107;
+  --danger-color: #dc3545;
+}
+
+body {
+  font-family: system-ui, -apple-system, sans-serif;
+  color: var(--text-color);
+  line-height: 1.5;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+/* Header */
+.topHeader {
+  background: var(--light-background);
+  border-bottom: 1px solid var(--border-color);
+  padding: 10px 0;
+}
+
+.headerContainer {
+  display: flex;
+  align-items: center;
+}
+
+.windowControls {
+  display: flex;
+  gap: 8px;
+}
+
+.circle {
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+}
+
+.red {
+  background: #ff3b30;
+}
+
+.yellow {
+  background: #ffcc00;
+}
+
+.green {
+  background: #34c759;
+}
+
+/* Navegación */
+.navbar {
+  background: linear-gradient(to right, var(--secondary-color), #e2bc8a);
+  padding: 15px 0;
+}
+
+.navContainer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.navLogo {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.navLogo img {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background: white;
+  padding: 5px;
+}
+
+.navLogoText {
+  display: flex;
+  flex-direction: column;
+}
+
+.universityName {
+  color: var(--primary-color);
+  font-weight: 700;
+  font-size: 24px;
+  line-height: 1.2;
+}
+
+.universityFullname {
+  color: #7b0000;
+  font-weight: 600;
+  font-size: 12px;
+}
+
+.navMenu {
+  display: flex;
+  gap: 20px;
+}
+
+.navLink {
+  color: white;
+  text-decoration: none;
+  padding: 8px 15px;
+  border-radius: 4px;
+  transition: background 0.2s;
+}
+
+.navLink:hover,
+.navLink.active {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+.navLink.logout {
+  background: var(--primary-color);
+}
+
+/* Contenido principal */
+main {
+  padding: 30px 0;
+  min-height: calc(100vh - 200px); /* Ajuste similar a InterfazPrincipal */
+}
+
+.card {
+  background: white;
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  padding: 25px;
+  margin-bottom: 30px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05); /* Sombra añadida para consistencia */
+}
+
+.card h2 {
+  margin-bottom: 20px;
+  font-size: 20px;
+  color: var(--text-color); /* Color de texto para consistencia */
+}
+
+/* Formularios */
+.formGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 15px;
+  margin-bottom: 15px;
+}
+
+.formGroup {
+  margin-bottom: 15px;
+}
+
+.formGroup.fullWidth {
+  grid-column: 1 / -1; /* Para que ocupe todo el ancho en un grid */
+}
+
+.formRow {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 15px;
+}
+
+label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: 500;
+  color: var(--text-color);
+}
+
+input,
+select,
+textarea {
+  width: 100%;
+  padding: 10px 12px; /* Ajustado padding para consistencia */
+  border: 1px solid var(--border-color);
+  border-radius: 4px;
+  font-size: 14px;
+  color: var(--text-color);
+  background-color: white;
+}
+
+input:focus,
+select:focus,
+textarea:focus {
+  outline: none;
+  border-color: var(--primary-color);
+  box-shadow: 0 0 0 2px rgba(153, 0, 0, 0.1); /* Sombra para focus */
+}
+
+textarea {
+  resize: vertical;
+  min-height: 80px;
+}
+
+/* ESTILOS PARA SUBIDA DE ARCHIVOS - DOCUMENTACIÓN*/
+.fileUploadContainer {
+  margin: 15px 0;
+}
+
+.uploadArea {
+  border: 2px dashed var(--border-color);
+  border-radius: 8px;
+  padding: 30px 20px;
+  text-align: center;
+  cursor: pointer;
+  background: var(--light-background);
+  transition: all 0.2s;
+}
+
+.uploadArea:hover,
+.uploadArea.dragOver {
+  border-color: var(--secondary-color);
+  background: rgba(212, 167, 106, 0.05);
+}
+
+.uploadContent {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+}
+
+.uploadIcon {
+  font-size: 32px;
+}
+
+.uploadText {
+  font-weight: 500;
+}
+
+.uploadSubtext {
+  font-size: 14px;
+  color: var(--light-text);
+}
+
+.filePreview {
+  margin-top: 15px;
+}
+
+.fileInfo {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  padding: 15px;
+  background: var(--light-background);
+  border-radius: 6px;
+  border: 1px solid var(--border-color);
+}
+
+.fileIcon {
+  font-size: 20px;
+}
+
+.fileDetails {
+  flex: 1;
+}
+
+.fileName {
+  font-weight: 500;
+  display: block;
+}
+
+.fileSize {
+  color: var(--light-text);
+  font-size: 14px;
+}
+
+.removeFile {
+  background: none;
+  border: none;
+  color: var(--danger-color);
+  cursor: pointer;
+  font-size: 16px;
+  padding: 5px;
+  border-radius: 50%;
+}
+
+.removeFile:hover {
+  background: rgba(220, 53, 69, 0.1);
+}
+
+/* Botones */
+.btn {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: 500;
+  transition: all 0.2s;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px; /* Espacio para iconos */
+}
+
+.btn.primary {
+  background: var(--primary-color);
+  color: white;
+}
+
+.btn.primary:hover:not(:disabled) {
+  background: #7b0000;
+  transform: translateY(-1px);
+}
+
+.btn.secondary {
+  background: var(--light-background);
+  color: var(--text-color);
+  border: 1px solid var(--border-color);
+}
+
+.btn.secondary:hover:not(:disabled) {
+  background: var(--border-color);
+  transform: translateY(-1px);
+}
+
+.btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
+}
+
+/* Panel del profesor */
+.professorSection {
+  border-top: 3px solid var(--primary-color); /* Consistencia con other cards */
+}
+
+.evaluationContainer {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 25px;
+}
+
+.documentToEvaluate h3,
+.evaluationForm h3 {
+  font-size: 18px;
+  margin-bottom: 15px;
+  color: var(--text-color);
+}
+
+.evalDocumentCard {
+  border: 1px solid var(--border-color);
+  border-radius: 6px;
+  padding: 15px;
+  background: var(--light-background);
+}
+
+.evalDocumentInfo h4 {
+  font-size: 16px;
+  margin-bottom: 8px;
+}
+
+.evalDocumentInfo p {
+  font-size: 14px;
+  color: var(--light-text);
+  margin-bottom: 5px;
+}
+
+.evalDocumentActions {
+  display: flex;
+  gap: 10px;
+  margin-top: 15px;
+}
+
+.formActions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+  margin-top: 15px;
+}
+
+/* Tablas */
+.tableContainer {
+  overflow-x: auto;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 15px;
+}
+
+th,
+td {
+  padding: 12px;
+  text-align: left;
+  border-bottom: 1px solid var(--border-color);
+}
+
+th {
+  background: var(--light-background);
+  font-weight: 600;
+  color: var(--text-color);
+}
+
+tr:hover {
+  background: #f9f9f9;
+}
+
+/* Estados (copiado de OpcionTema.module.css para consistencia) */
+.status {
+  padding: 4px 10px;
+  border-radius: 16px;
+  font-size: 12px;
+  font-weight: 600;
+  display: inline-block;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.status.pending {
+  background: #fff3cd;
+  color: #856404;
+}
+
+.status.approved {
+  background: #d4edda;
+  color: #155724;
+}
+
+.status.rejected {
+  background: #f8d7da;
+  color: #721c24;
+}
+
+.status.reviewing {
+  background: #cce5ff;
+  color: #004085;
+}
+
+.status.approvedWithObservations {
+  background: #e2f0d9; /* Lighter green */
+  color: #3b7631; /* Darker green */
+}
+
+.status.requiresCorrection {
+  background: #fdf5e6; /* Light orange/yellow */
+  color: #926d0a; /* Darker orange */
+}
+
+/* Pie de página (copiado de otros módulos) */
+.divider {
+  height: 1px;
+  background: linear-gradient(to right, transparent, var(--border-color), transparent);
+  margin: 0 auto;
+}
+
+.footer {
+  background-color: var(--light-background);
+  padding: 30px 0;
+  text-align: center;
+  border-top: 1px solid var(--border-color);
+}
+
+.footerText {
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--text-color);
+  margin-bottom: 10px;
+}
+
+.copyright {
+  font-size: 14px;
+  color: var(--light-text);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .formGrid,
+  .formRow,
+  .evaluationContainer {
+    grid-template-columns: 1fr;
+  }
+  .navContainer {
+    flex-direction: column;
+    gap: 15px;
+  }
+  .navMenu {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+}
+
+@media (max-width: 576px) {
+  .navMenu {
+    flex-direction: column;
+    width: 100%;
+  }
+  .navLink {
+    text-align: center;
+  }
+  .formActions {
+    flex-direction: column;
+  }
+}
+
+/* Mensaje de error */
+.errorMessage {
+  display: block;
+  color: var(--danger-color);
+  font-size: 13px;
+  margin-top: 5px;
+  min-height: 18px;
+  font-weight: 500;
+}
+
+/* Opcional: Estilo adicional para campos con error */
+.formGroup input.error,
+.formGroup select.error,
+.formGroup textarea.error {
+  border-color: var(--danger-color);
+  box-shadow: 0 0 0 3px rgba(220, 53, 69, 0.1);
+}
