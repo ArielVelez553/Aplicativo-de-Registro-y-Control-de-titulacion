@@ -20,6 +20,7 @@ function Registro() {
     role: "",
     terms: false,
   })
+
   // Estado para errores
   const [errors, setErrors] = useState({
     firstName: "",
@@ -32,17 +33,19 @@ function Registro() {
     terms: "",
     general: "",
   })
+
   // Estado para mostrar/ocultar contraseñas
   const [showPassword, setShowPassword] = useState(false)
   const [showConfirmPassword, setShowConfirmPassword] = useState(false)
+
   // Estado para el proceso de registro
   const [isSubmitting, setIsSubmitting] = useState(false)
+
   const navigate = useNavigate() // Usa useNavigate para la navegación
 
   // Manejar cambios en los inputs
   const handleInputChange = (e) => {
     const { name, value, type, checked } = e.target
-
     setFormData((prev) => ({
       ...prev,
       [name]: type === "checkbox" ? checked : value,
@@ -61,6 +64,7 @@ function Registro() {
   const handleSubmit = async (e) => {
     e.preventDefault()
     setIsSubmitting(true)
+
     // Limpiar errores previos
     setErrors({
       firstName: "",
@@ -73,10 +77,10 @@ function Registro() {
       terms: "",
       general: "",
     })
+
     try {
       // Validar formulario
       const validationResult = validateRegisterForm(formData)
-
       if (validationResult.hasError) {
         setErrors((prev) => ({
           ...prev,
@@ -85,13 +89,12 @@ function Registro() {
         setIsSubmitting(false)
         return
       }
+
       // Registrar usuario
       const registerResult = registerUser(formData)
-
       if (registerResult.success) {
         // Registro exitoso
         alert(`¡Registro exitoso! Bienvenido ${registerResult.user.fullName}`)
-
         // Limpiar formulario
         setFormData({
           firstName: "",
@@ -103,7 +106,6 @@ function Registro() {
           role: "",
           terms: false,
         })
-
         // Redireccionar al login después de 2 segundos
         setTimeout(() => {
           navigate("/login") // Usa navigate en lugar de window.location.href
@@ -194,6 +196,7 @@ function Registro() {
               <h2>Crear cuenta</h2>
               <p className={styles.registerSubtitle}>Regístrate para acceder al sistema de trabajos de titulación</p>
             </div>
+
             {/* Mensaje de error general */}
             {errors.general && (
               <div className={styles.errorBanner}>
@@ -201,6 +204,7 @@ function Registro() {
                 <span className={styles.errorText}>{errors.general}</span>
               </div>
             )}
+
             <form className={styles.registerForm} onSubmit={handleSubmit}>
               <div className={styles.formRow}>
                 <div className={styles.formGroup}>
@@ -230,6 +234,7 @@ function Registro() {
                   <span className={styles.errorMessage}>{errors.lastName}</span>
                 </div>
               </div>
+
               <div className={styles.formGroup}>
                 <label htmlFor="email">Correo electrónico</label>
                 <input
@@ -243,6 +248,7 @@ function Registro() {
                 />
                 <span className={styles.errorMessage}>{errors.email}</span>
               </div>
+
               <div className={styles.formGroup}>
                 <label htmlFor="username">Nombre de usuario</label>
                 <input
@@ -256,6 +262,7 @@ function Registro() {
                 />
                 <span className={styles.errorMessage}>{errors.username}</span>
               </div>
+
               <div className={styles.formRow}>
                 <div className={styles.formGroup}>
                   <label htmlFor="password">Contraseña</label>
@@ -306,6 +313,7 @@ function Registro() {
                   <span className={styles.errorMessage}>{errors.confirmPassword}</span>
                 </div>
               </div>
+
               <div className={styles.formGroup}>
                 <label htmlFor="role">Tipo de usuario</label>
                 <select
@@ -317,11 +325,11 @@ function Registro() {
                 >
                   <option value="">Selecciona tu rol</option>
                   <option value="student">Estudiante</option>
-                  <option value="teacher">Docente</option>
-                  <option value="admin">Administrador</option>
+                  {/* Solo estudiantes pueden registrarse públicamente */}
                 </select>
                 <span className={styles.errorMessage}>{errors.role}</span>
               </div>
+
               <div className={`${styles.formGroup} ${styles.checkboxGroup}`}>
                 <label className={styles.checkboxContainer}>
                   <input
@@ -344,10 +352,12 @@ function Registro() {
                 </label>
                 <span className={styles.errorMessage}>{errors.terms}</span>
               </div>
+
               <button type="submit" className={styles.registerBtn} disabled={isSubmitting}>
                 <span>{isSubmitting ? "Creando cuenta..." : "Crear cuenta"}</span>
               </button>
             </form>
+
             <div className={styles.registerFooter}>
               <p>
                 ¿Ya tienes una cuenta?{" "}
@@ -361,6 +371,7 @@ function Registro() {
       </main>
 
       <div className={styles.divider} />
+
       {/* Pie de página */}
       <footer className={styles.footer}>
         <div className={styles.container}>

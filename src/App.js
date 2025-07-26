@@ -8,6 +8,7 @@ import InterfazPrincipal from "./Users/InterfazPrincipal";
 import OpcionTema from "./Users/OpcionTema";
 import RegistrarTrabajo from "./Users/Registrartrabajo";
 import Avances from "./Users/Avances";
+import AdminPanel from "./Server/AdminPanel";
 
 function App() {
   return (
@@ -20,6 +21,7 @@ function App() {
         <Route path="/opciontema" element={<OpcionTema/>}/>
         <Route path="/registrartrabajo" element={<RegistrarTrabajo/>}/> 
         <Route path="/avances" element={<Avances/>}/>
+        <Route path="/adminpanel" element={<AdminPanel/>}/>
       </Routes>
     </Router>
   );
